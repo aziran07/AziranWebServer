@@ -1,0 +1,15 @@
+
+server {
+    #labyrinthnavi
+
+    listen *:${LABY_PORT};
+    server_tokens off;
+
+    access_log  /var/log/nginx/laby_access.log  main;
+
+    location / {
+        proxy_pass http://labyrinth:80;
+        proxy_set_header Host $host;
+    }
+    
+}
