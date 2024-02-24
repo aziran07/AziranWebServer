@@ -32,7 +32,7 @@ services:
     depends_on:
       - labyrinth
     ports:
-      - "3733:80/tcp"
+      - "${LABY_PORT}:${LABY_PORT}/tcp"
     environment:
       - LABY_PORT=${LABY_PORT}
       - TZ=Asia/Seoul
