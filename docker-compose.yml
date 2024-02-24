@@ -12,7 +12,7 @@ services:
     volumes:
       - ./laby/src:/mnt/laby/src
       - ./laby/requirements.txt:/mnt/laby/requirements.txt
-    entrypoint: uvicorn main:app --port ${LABY_PORT}
+    # entrypoint: uvicorn main:app --port ${LABY_PORT}
     networks:
       - nginx_proxy_net
     expose:
