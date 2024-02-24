@@ -1,0 +1,19 @@
+{
+  "name": "labyrinth-navi",
+  "version": "1.0.0",
+  "description": "private-project",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/aziran07/AziranWebServer"
+  },
+  "author": "aziran07",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
