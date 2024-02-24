@@ -1,6 +1,6 @@
-const express=require('express');
+import express from 'express';
 
-const PORT=3733;
+const PORT=process.env.LABY_PORT;
 
 const app=express();
 

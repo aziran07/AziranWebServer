@@ -1,3 +1,4 @@
 /laby/HTML_origin
 */logs
 *node_modules
+*package-lock.json
