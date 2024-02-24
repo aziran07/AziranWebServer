@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-COPY ./laby/src /mnt/src
+COPY ./src /mnt/src
 
 WORKDIR /mnt/src
 
