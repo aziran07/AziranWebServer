@@ -5,5 +5,3 @@ COPY src ${LABY_WORK_DIR}/src
 
 WORKDIR ${LABY_WORK_DIR}
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
-
-RUN python
