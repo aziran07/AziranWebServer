@@ -10,10 +10,9 @@ services:
     build: ./laby
     container_name: labyrinthnavi
     volumes:
-      - ./laby/templates:/etc/nginx/templates
-      - ./laby/nginx.conf:/etc/nginx/nginx.conf
-      - ./laby/html:/usr/share/nginx/html
-      - ./laby/logs:/var/log/nginx
+      - ./laby/src:/mnt/laby/src
+      - ./laby/requirements.txt:/mnt/laby/requirements.txt
+    entrypoint: uvicorn main:app --port ${LABY_PORT}
     networks:
       - nginx_proxy_net
     expose:
