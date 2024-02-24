@@ -7,9 +7,12 @@ networks:
 services:
 
   labyrinth:
-    build: ./laby
+    build: 
+      context: ./laby
+      args:
+        - LABY_WORK_DIR=${LABY_WORK_DIR}
     container_name: labyrinthnavi
-    entrypoint: uvicorn main:app --port ${LABY_PORT}
+    entrypoint: uvicorn ${LABY_WORK_DIR}.src.main:app --port ${LABY_PORT}
     networks:
       - nginx_proxy_net
     expose:
@@ -19,7 +22,8 @@ services:
       - TZ=Asia/Seoul
 
   nginxproxy:
-    build: ./nginxproxy
+    build: 
+      context: ./nginxproxy
     container_name: reverseproxy
     volumes:
       - ./nginxproxy/logs:/var/log/nginx

@@ -1,7 +1,7 @@
 FROM python:3.12-alpine
 
-COPY requirements.txt /mnt/laby/requirements.txt
-COPY src /mnt/src
+COPY requirements.txt ${LABY_WORK_DIR}/requirements.txt
+COPY src ${LABY_WORK_DIR}/src
 
-WORKDIR /mnt/laby
+WORKDIR ${LABY_WORK_DIR}
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
