@@ -7,13 +7,9 @@ networks:
 services:
 
   labyrinth:
-    build: ./laby
+    build: 
+      context: ./laby
     container_name: labyrinthnavi
-    volumes:
-      - ./laby/templates:/etc/nginx/templates
-      - ./laby/nginx.conf:/etc/nginx/nginx.conf
-      - ./laby/html:/usr/share/nginx/html
-      - ./laby/logs:/var/log/nginx
     networks:
       - nginx_proxy_net
     expose:
@@ -23,18 +19,17 @@ services:
       - TZ=Asia/Seoul
 
   nginxproxy:
-    build: ./nginxproxy
+    build: 
+      context: ./nginxproxy
     container_name: reverseproxy
     volumes:
-      - ./nginxproxy/templates:/etc/nginx/templates
-      - ./nginxproxy/nginx.conf:/etc/nginx/nginx.conf
       - ./nginxproxy/logs:/var/log/nginx
     networks:
       - nginx_proxy_net
     depends_on:
       - labyrinth
     ports:
-      - "3733:80/tcp"
+      - "3733:${LABY_PORT}/tcp"
     environment:
       - LABY_PORT=${LABY_PORT}
       - TZ=Asia/Seoul
