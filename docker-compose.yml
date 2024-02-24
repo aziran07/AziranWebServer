@@ -12,7 +12,7 @@ services:
       args:
         - LABY_WORK_DIR=${LABY_WORK_DIR}
     container_name: labyrinthnavi
-    entrypoint: uvicorn ${LABY_WORK_DIR}.src.main:app --port ${LABY_PORT}
+    # entrypoint: uvicorn main:app --port ${LABY_PORT}
     networks:
       - nginx_proxy_net
     expose:
