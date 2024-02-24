@@ -9,8 +9,6 @@ services:
   labyrinth:
     build: ./laby
     container_name: labyrinthnavi
-    volumes:
-      - ./laby/src:/mnt/laby/src
     entrypoint: uvicorn main:app --port ${LABY_PORT}
     networks:
       - nginx_proxy_net
@@ -24,8 +22,6 @@ services:
     build: ./nginxproxy
     container_name: reverseproxy
     volumes:
-      - ./nginxproxy/templates:/etc/nginx/templates
-      - ./nginxproxy/nginx.conf:/etc/nginx/nginx.conf
       - ./nginxproxy/logs:/var/log/nginx
     networks:
       - nginx_proxy_net
