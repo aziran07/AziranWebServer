@@ -5,6 +5,6 @@ COPY package.json /mnt/package.json
 
 WORKDIR /mnt
 
-RUN npm install
+RUN yarn install
 
-ENTRYPOINT [ "node", "run", "start" ]
+ENTRYPOINT [ "yarn", "run", "start" ]
