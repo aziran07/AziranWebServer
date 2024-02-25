@@ -7,4 +7,4 @@ WORKDIR /mnt
 
 RUN npm install
 
-ENTRYPOINT [ "node", "./src/server.js" ]
+ENTRYPOINT [ "node", "run", "start" ]

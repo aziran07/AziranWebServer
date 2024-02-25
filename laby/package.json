@@ -1,20 +1,17 @@
 {
   "name": "labyrinth-navi",
-  "version": "1.0.0",
-  "description": "private-project",
-  "main": "./src/server.js",
-  "scripts": {
-    "test": "test",
-    "start": "node ./src/server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "github.com/aziran07/AziranWebServer"
-  },
+  "version": "0.1.0",
+  "description": "prod-by-azrian-server",
+  "main": "./src/index.js",
+  "repository": "github.com/aziran07/AziranWebServer",
   "author": "aziran07",
-  "license": "ISC",
+  "license": "",
   "type": "module",
   "dependencies": {
-    "express": "^4.18.2"
+    "fastify": "^4.26.1"
+  },
+  "scripts": {
+    "start": "node ./src/index.js",
+    "local": "export LABY_PORT=3700 && node ./src/index.js"
   }
 }
