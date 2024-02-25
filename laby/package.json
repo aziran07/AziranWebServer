@@ -18,6 +18,6 @@
   },
   "scripts": {
     "start": "node ./src/index.js",
-    "local": "export LABY_PORT=3700 && node ./src/index.js"
+    "local": "export LABY_PORT=3000 && node ./src/index.js"
   }
 }
