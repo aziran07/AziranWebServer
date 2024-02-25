@@ -9,7 +9,7 @@ app.get('/',  (_req, res) => {
     res.send({ hello: 'world' });
 });
 
-app.listen({ port: PORT }, (err,  address) => {
+app.listen({ port: PORT, host: "::" }, (err,  address) => {
     if (err) {
         app.log.error(err);
         process.exit(1);
