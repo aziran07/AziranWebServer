@@ -1,18 +1,16 @@
-import Fastify from "fastify";
-const fastify = Fastify({
-  logger: true,
-});
+import express from "express";
+import path from "path";
 
+const __dirName = path.resolve();
+const htmlPath = path.join(__dirName, "html");
+
+const app = express();
 const PORT = process.env.LABY_PORT;
 
-fastify.get("/", (_req, res) => {
-  res.send({ hello: "world" });
+app.get("/", async (_req, res) => {
+  res.sendFile(path.join(htmlPath, "index.html"));
 });
 
-fastify.listen({ port: PORT, host: "::" }, (err, address) => {
-  if (err) {
-    fastify.log.error(err);
-    process.exit(1);
-  }
-  console.log(`${address} Server listening...`);
+app.listen(PORT, () => {
+  console.log(`Server listening...`);
 });
