@@ -1,0 +1,4 @@
+server {
+    listen ${MINECRAFT_PORT};
+    proxy_pass minecraft:${MINECRAFT_PORT};
+}

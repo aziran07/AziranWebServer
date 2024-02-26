@@ -1,4 +1,0 @@
-server {
-    listen ${COREKEEPER_PORT} udp;
-    proxy_pass corekeeper:${COREKEEPER_PORT};
-}

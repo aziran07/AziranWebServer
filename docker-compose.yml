@@ -18,15 +18,23 @@ services:
       - LABY_PORT=${LABY_PORT}
       - TZ=Asia/Seoul
 
-  corekeeper:
+  minecraft:
     build: 
-      context: ./corekeeper
-    container_name: corekeeper
+      context: ./minecraft
+    tty: true
+    stdin_open: true
+    container_name: minecraft
     volumes:
+      - ./minecraft/server-data:/data
     networks:
       - nginx_proxy_net
     expose:
-      - "${COREKEEPER_PORT}/udp"
+      - "${MINECRAFT_PORT}/tcp"
+    environment:
+      - MINECRAFT_PORT=${MINECRAFT_PORT}
+      - EULA=TRUE
+      - MAX_MEMORY=16G
+      - TZ=Asia/Seoul
 
 
   nginxproxy:
@@ -37,12 +45,10 @@ services:
       - ./nginxproxy/logs:/var/log/nginx
     networks:
       - nginx_proxy_net
-    depends_on:
-      - corekeeper
     ports:
       - "3733:${LABY_PORT}/tcp"
-      - "${COREKEEPER_PORT}:${COREKEEPER_PORT}/udp"
+      - "${MINECRAFT_PORT}:${MINECRAFT_PORT}/tcp"
     environment:
       - LABY_PORT=${LABY_PORT}
-      - COREKEEPER_PORT=${COREKEEPER_PORT}
+      - MINECRAFT_PORT=${MINECRAFT_PORT}
       - TZ=Asia/Seoul
