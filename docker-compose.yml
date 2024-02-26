@@ -18,6 +18,17 @@ services:
       - LABY_PORT=${LABY_PORT}
       - TZ=Asia/Seoul
 
+  corekeeper:
+    build: 
+      context: ./corekeeper
+    container_name: corekeeper
+    volumes:
+    networks:
+      - nginx_proxy_net
+    expose:
+      - "${COREKEEPER_PORT}/udp"
+
+
   nginxproxy:
     build: 
       context: ./nginxproxy
@@ -27,9 +38,11 @@ services:
     networks:
       - nginx_proxy_net
     depends_on:
-      - labyrinth
+      - corekeeper
     ports:
       - "3733:${LABY_PORT}/tcp"
+      - "${COREKEEPER_PORT}:${COREKEEPER_PORT}/udp"
     environment:
       - LABY_PORT=${LABY_PORT}
+      - COREKEEPER_PORT=${COREKEEPER_PORT}
       - TZ=Asia/Seoul

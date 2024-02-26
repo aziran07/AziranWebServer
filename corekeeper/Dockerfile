@@ -1,0 +1,1 @@
+FROM escaping/core-keeper-dedicated:latest
