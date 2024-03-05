@@ -2,6 +2,7 @@
   "name": "labyrinth-navi",
   "version": "0.1.0",
   "description": "prod-by-azrian-server",
+  "private": true,
   "main": "./src/index.js",
   "repository": "github.com/aziran07/AziranWebServer",
   "author": "aziran07",
@@ -14,7 +15,10 @@
     "eslint": "^8.57.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "3.2.5"
+    "prettier": "3.2.5",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
   },
   "scripts": {
     "start": "node ./src/index.js",
