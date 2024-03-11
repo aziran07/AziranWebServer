@@ -1,15 +1,13 @@
 {
-  "presets": ["@babel/preset-env"],
-  "plugins": [
+  "presets": [
     [
-      "@babel/plugin-transform-runtime",
+      "@babel/preset-env",
       {
-        "corejs": {
-          "version": 3,
-          "proposals": true
-        },
-        "version": "^7.24.0"
+        "targets": {
+          "node": 20
+        }
       }
-    ]
+    ],
+    ["@babel/preset-typescript"]
   ]
 }
