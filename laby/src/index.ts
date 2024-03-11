@@ -1,6 +1,6 @@
-import express, { Request, Response, NextFunction } from "express";
+import exp, { Express, Request, Response, NextFunction } from "express";
 
-const app = express();
+const app: Express = exp();
 const PORT: string = process.env.LABY_PORT;
 
 app.get("/", (_req: Request, res: Response, _nextFunc: NextFunction) => {
