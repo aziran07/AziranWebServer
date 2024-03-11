@@ -6,7 +6,7 @@
   "repository": "github.com/aziran07/AziranWebServer",
   "author": "aziran07",
   "license": "UNLICENSED",
-  "main": "./dist/main.js",
+  "main": "./dist/index.js",
   "dependencies": {
     "express": "^4.18.2"
   },
@@ -26,7 +26,7 @@
   },
   "scripts": {
     "build": "npx webpack",
-    "start": "node ./dist/main.js",
+    "start": "node ./dist/index.js",
     "local": "npx webpack && export LABY_PORT=3000 && nodemon"
   }
 }

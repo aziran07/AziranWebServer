@@ -4,7 +4,7 @@ module.exports = {
   mode: "none",
   entry: "./src/index.ts",
   output: {
-    filename: "main.js",
+    filename: "index.js",
     path: path.resolve(__dirname, "dist")
   },
   target: "node",
