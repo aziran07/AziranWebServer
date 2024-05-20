@@ -49,6 +49,8 @@ services:
       - SERVERNAME=aziran-server
       - GAMEPORT=${VRISING_PORT}
       - QUERYPORT=${VRISINGQUERY_PORT}
+    networks:
+      - nginx_proxy_net
     restart: unless-stopped
 
   nginxproxy:
