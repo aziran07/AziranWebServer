@@ -5,3 +5,5 @@
 *yarn.lock
 *server-data
 *dist
+/vrising/persistentdata
+/vrising/server
