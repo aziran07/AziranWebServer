@@ -1,4 +1,7 @@
 server {
     listen ${VRISING_PORT};
     proxy_pass vrising:${VRISING_PORT};
+
+    listen ${VRISINGQUERY_PORT};
+    proxy_pass vrising:${VRISINGQUERY_PORT};
 }

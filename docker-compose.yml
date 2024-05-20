@@ -55,8 +55,8 @@ services:
     environment:
       - TZ=Asia/Seoul
       - SERVERNAME=aziran-server
-      - GAMEPORT = ${VRISING_PORT}
-      - QUERYPORT = ${VRISINGQUERY_PORT}
+      - GAMEPORT=${VRISING_PORT}
+      - QUERYPORT=${VRISINGQUERY_PORT}
     restart: unless-stopped
 
   nginxproxy:
@@ -73,6 +73,6 @@ services:
     environment:
       - LABY_PORT=${LABY_PORT}
       - MINECRAFT_PORT=${MINECRAFT_PORT}
-      - VRISING_PORT = ${VRISING_PORT}
-      - VRISINGQUERY_PORT = ${VRISINGQUERY_PORT}
+      - VRISING_PORT=${VRISING_PORT}
+      - VRISINGQUERY_PORT=${VRISINGQUERY_PORT}
       - TZ=Asia/Seoul
