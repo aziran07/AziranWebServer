@@ -5,40 +5,62 @@ networks:
     driver: bridge
 
 services:
+  # labyrinth:
+  #   build:
+  #     context: ./laby
+  #   container_name: labyrinthnavi
+  #   networks:
+  #     - nginx_proxy_net
+  #   expose:
+  #     - "${LABY_PORT}"
+  #   environment:
+  #     - LABY_PORT=${LABY_PORT}
+  #     - TZ=Asia/Seoul
 
-  labyrinth:
-    build: 
-      context: ./laby
-    container_name: labyrinthnavi
-    networks:
-      - nginx_proxy_net
-    expose:
-      - "${LABY_PORT}"
-    environment:
-      - LABY_PORT=${LABY_PORT}
-      - TZ=Asia/Seoul
+  # minecraft:
+  #   build:
+  #     context: ./minecraft
+  #   tty: true
+  #   stdin_open: true
+  #   container_name: minecraft
+  #   volumes:
+  #     - ./minecraft/server-data:/data
+  #   networks:
+  #     - nginx_proxy_net
+  #   expose:
+  #     - "${MINECRAFT_PORT}/tcp"
+  #   environment:
+  #     - MINECRAFT_PORT=${MINECRAFT_PORT}
+  #     - EULA=TRUE
+  #     - MAX_MEMORY=16G
+  #     - TZ=Asia/Seoul
 
-  minecraft:
-    build: 
-      context: ./minecraft
-    tty: true
-    stdin_open: true
-    container_name: minecraft
+  vrising:
+    build:
+      context: ./vrising
     volumes:
-      - ./minecraft/server-data:/data
-    networks:
-      - nginx_proxy_net
+      - type: bind
+        source: ./vrising/server
+        target: /mnt/vrising/server
+        bind:
+          create_host_path: true
+      - type: bind
+        source: ./vrising/persistentdata
+        target: /mnt/vrising/persistentdata
+        bind:
+          create_host_path: true
     expose:
-      - "${MINECRAFT_PORT}/tcp"
+      - "${VRISING_PORT}/udp"
+      - "${VRISINGQUERY_PORT}/udp"
     environment:
-      - MINECRAFT_PORT=${MINECRAFT_PORT}
-      - EULA=TRUE
-      - MAX_MEMORY=16G
       - TZ=Asia/Seoul
-
+      - SERVERNAME=aziran-server
+      - GAMEPORT = ${VRISING_PORT}
+      - QUERYPORT = ${VRISINGQUERY_PORT}
+    restart: unless-stopped
 
   nginxproxy:
-    build: 
+    build:
       context: ./nginxproxy
     container_name: reverseproxy
     volumes:
@@ -46,9 +68,9 @@ services:
     networks:
       - nginx_proxy_net
     ports:
-      - "3733:${LABY_PORT}/tcp"
-      - "${MINECRAFT_PORT}:${MINECRAFT_PORT}/tcp"
+      - "${VRISING_PORT}:${VRISING_PORT}/udp"
+      - "${VRISINGQUERY_PORT}:${VRISINGQUERY_PORT}/udp"
     environment:
-      - LABY_PORT=${LABY_PORT}
-      - MINECRAFT_PORT=${MINECRAFT_PORT}
+      - VRISING_PORT = ${VRISING_PORT}
+      - VRISINGQUERY_PORT = ${VRISINGQUERY_PORT}
       - TZ=Asia/Seoul

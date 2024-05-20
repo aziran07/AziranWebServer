@@ -1,0 +1,1 @@
+FROM trueosiris/vrising:2.1
