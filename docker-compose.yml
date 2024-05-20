@@ -39,16 +39,8 @@ services:
     build:
       context: ./vrising
     volumes:
-      - type: bind
-        source: ./vrising/server
-        target: /mnt/vrising/server
-        bind:
-          create_host_path: true
-      - type: bind
-        source: ./vrising/persistentdata
-        target: /mnt/vrising/persistentdata
-        bind:
-          create_host_path: true
+      - ./vrising/server:/mnt/vrising/server
+      - ./vrising/persistentdata:/mnt/vrising/persistentdata
     expose:
       - "${VRISING_PORT}/udp"
       - "${VRISINGQUERY_PORT}/udp"
