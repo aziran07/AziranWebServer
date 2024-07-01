@@ -3,6 +3,6 @@
 *node_modules
 *package-lock.json
 *yarn.lock
-*server-data
-*vrising
-*laby
+/minecraft/server-data
+/vrising
+/laby

@@ -20,7 +20,7 @@ services:
     environment:
       - MINECRAFT_PORT=${MINECRAFT_PORT}
       - EULA=TRUE
-      - MAX_MEMORY=16G
+      - MAX_MEMORY=24G
       - TZ=Asia/Seoul
 
   nginxproxy:
