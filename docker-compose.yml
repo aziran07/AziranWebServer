@@ -5,21 +5,8 @@ networks:
     driver: bridge
 
 services:
-
-  labyrinth:
-    build: 
-      context: ./laby
-    container_name: labyrinthnavi
-    networks:
-      - nginx_proxy_net
-    expose:
-      - "${LABY_PORT}"
-    environment:
-      - LABY_PORT=${LABY_PORT}
-      - TZ=Asia/Seoul
-
   minecraft:
-    build: 
+    build:
       context: ./minecraft
     tty: true
     stdin_open: true
@@ -36,9 +23,8 @@ services:
       - MAX_MEMORY=16G
       - TZ=Asia/Seoul
 
-
   nginxproxy:
-    build: 
+    build:
       context: ./nginxproxy
     container_name: reverseproxy
     volumes:
@@ -46,9 +32,7 @@ services:
     networks:
       - nginx_proxy_net
     ports:
-      - "3733:${LABY_PORT}/tcp"
       - "${MINECRAFT_PORT}:${MINECRAFT_PORT}/tcp"
     environment:
-      - LABY_PORT=${LABY_PORT}
       - MINECRAFT_PORT=${MINECRAFT_PORT}
       - TZ=Asia/Seoul
